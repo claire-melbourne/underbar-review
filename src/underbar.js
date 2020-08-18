@@ -97,7 +97,17 @@
   };
 
   // Produce a duplicate-free version of the array.
-  _.uniq = function(array, isSorted, iterator) {
+  _.uniq = function(array, isSorted, iterator = _.identity) {
+    var results = [];
+    var iteratees = [];
+    _.each(array, function(item) {
+      var iterated = iterator(item);
+      if (_.indexOf(iteratees, iterated) === -1) {
+        iteratees.push(iterated);
+        results.push(item);
+      }
+    });
+    return results;
   };
 
 
