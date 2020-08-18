@@ -231,7 +231,6 @@
       args.push(arguments[i]);
     }
     _.each(args, function(extender) {
-      debugger;
       _.each(extender, function(value, key) {
         obj[key] = extender[key];
       });
@@ -242,6 +241,18 @@
   // Like extend, but doesn't ever overwrite a key that already
   // exists in obj
   _.defaults = function(obj) {
+    var args = [];
+    for (var i = 1; i < arguments.length; i ++) {
+      args.push(arguments[i]);
+    }
+    _.each(args, function(extender) {
+      _.each(extender, function(value, key) {
+        if (obj[key] === undefined) {
+          obj[key] = extender[key];
+        }
+      });
+    });
+    return obj;
   };
 
 
