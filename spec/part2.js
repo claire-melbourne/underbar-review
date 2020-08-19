@@ -83,6 +83,9 @@
         return num % 2 === 0;
       };
 
+      checkForNativeMethods(function() {
+        _.every([0, 2, 4], isEven);
+      });
 
       it('passes by default for an empty collection', function() {
         expect(_.every([], _.identity)).to.be.true;
@@ -128,6 +131,9 @@
         return number % 2 === 0;
       };
 
+      checkForNativeMethods(function() {
+        _.some([-1, 0, 1], isEven);
+      });
 
       it('should fail by default for an empty collection', function() {
         expect(_.some([])).to.be.false;
@@ -172,6 +178,10 @@
     });
 
     describe('extend', function() {
+
+      checkForNativeMethods(function() {
+        _.extend({}, { a: 1, b: 5});
+      });
 
       it('returns the first argument', function() {
         var destination = {};
@@ -218,6 +228,10 @@
     });
 
     describe('defaults', function() {
+
+      checkForNativeMethods(function() {
+        _.defaults({a: 1, b: 3}, {a: 2, c: 5});
+      });
 
       it('should return the original target object', function() {
         /*
@@ -346,6 +360,10 @@
 
     describe('once', function() {
 
+      checkForNativeMethods(function() {
+        _.once(_.identity);
+      });
+
       it('should return a function', function() {
         // noop is short for `no-operation` and is pronounced `no-op`
         var noop = _.once(function() {});
@@ -394,6 +412,10 @@
         };
 
         memoAdd = _.memoize(add);
+      });
+
+      checkForNativeMethods(function() {
+        _.memoize(_.identity);
       });
 
 
@@ -451,6 +473,10 @@
         callback = sinon.spy();
       });
 
+      checkForNativeMethods(function() {
+        _.delay(_.identity, 1000);
+      });
+
 
       it('should only execute the function after the specified wait time', function() {
         _.delay(callback, 100);
@@ -472,6 +498,9 @@
     });
 
     describe('shuffle', function() {
+      checkForNativeMethods(function(x) {
+        _.shuffle([0, 1, 2]);
+      });
 
       it('should not modify the original object', function() {
         var numbers = [4, 5, 6];
