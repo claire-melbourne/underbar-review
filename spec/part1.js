@@ -20,6 +20,9 @@
   describe('Part I', function() {
 
     describe('identity', function() {
+      checkForNativeMethods(function() {
+        _.identity('string');
+      });
 
       it('should return whatever value is passed into it', function() {
         var uniqueObject = {};
@@ -31,6 +34,9 @@
     });
 
     describe('first', function() {
+      checkForNativeMethods() {
+        _.first([1, 2, 3]);
+      }
 
       it('should be able to pull out the first element of an array', function() {
         expect(_.first([1, 2, 3])).to.equal(1);

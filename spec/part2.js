@@ -19,6 +19,10 @@
 
     describe('contains', function() {
 
+      checkForNativeMethods(function() {
+        _.contains([1, 2, 3, 4, 5], 4);
+      });
+
       it('should not mutate the input array', function() {
         var input = [1, 2, 3, 4, 5];
         var result = _.contains(input, 4);
