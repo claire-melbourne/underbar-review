@@ -34,9 +34,9 @@
     });
 
     describe('first', function() {
-      checkForNativeMethods() {
+      checkForNativeMethods(function() {
         _.first([1, 2, 3]);
-      }
+      });
 
       it('should be able to pull out the first element of an array', function() {
         expect(_.first([1, 2, 3])).to.equal(1);
